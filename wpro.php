@@ -498,8 +498,7 @@ class WordpressReadOnly extends WordpressReadOnlyGeneric {
 //		$this->debug(print_r($data, true));
 
 		if ($this->upload_basedir == '') {
-			$this->upload_basedir = $this->tempdir . 'wpro' . time() . rand(0, 999999);
-			while (is_dir($this->upload_basedir)) $this->upload_basedir = $this->tempdir . 'wpro' . time() . rand(0, 999999);
+			$this->upload_basedir = $this->tempdir . 'WPRO_'.md5($_SERVER['HTTP_HOST']);
 		}
 		$data['basedir'] = $this->upload_basedir;
 		switch (wpro_get_option('wpro-service')) {
